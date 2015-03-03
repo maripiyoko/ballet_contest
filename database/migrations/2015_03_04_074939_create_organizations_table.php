@@ -15,6 +15,9 @@ class CreateOrganizationsTable extends Migration {
 		Schema::create('organizations', function(Blueprint $table)
 		{
 			$table->increments('id');
+      $table->string('name')->unique();
+      $table->integer('owner_id')->unsigned()->default(0);
+      $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}
