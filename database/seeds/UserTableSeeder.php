@@ -8,10 +8,11 @@ use App\User;
 class UserTableSeeder extends Seeder {
 
   public function run() {
-    User::truncate();
+    DB::table('users')->delete();
 
     User::create(
       [
+        'id' => 1,
         'name' => 'test user 1',
         'password' => Hash::make('foobar'),
         'email' => 'testuser1@gmail.com'
