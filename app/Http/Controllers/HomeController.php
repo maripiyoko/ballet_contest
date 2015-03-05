@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Organization;
+use Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +33,9 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+    $currentUser = Auth::user();
+    $organization = Organization::find(1);
+		return view('home')->with(compact('currentUser', 'organization'));
 	}
 
 }
