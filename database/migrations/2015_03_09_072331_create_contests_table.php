@@ -15,6 +15,13 @@ class CreateContestsTable extends Migration {
 		Schema::create('contests', function(Blueprint $table)
 		{
 			$table->increments('id');
+      $table->string('name')->unique();
+      $table->string('description');
+      $table->timestamp('start_date');
+      $table->timestamp('end_date');
+      $table->integer('organization_id')->unsigned()->default(0);
+      $table->foreign('organization_id')
+        ->references('id')->on('organizations')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}
