@@ -11,4 +11,7 @@ class Organization extends Model {
 	 */
 	protected $table = 'organizations';
 
+  public function contests() {
+    return $this->hasMany('App\Contest');
+  }
 }

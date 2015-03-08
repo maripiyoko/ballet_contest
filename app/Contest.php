@@ -7,4 +7,8 @@ class Contest extends Model {
 	//
 	protected $table = 'contests';
 
+  public function organization() {
+    return $this->belongsTo('App\Organization');
+  }
+
 }
