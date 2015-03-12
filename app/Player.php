@@ -4,6 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Player extends Model {
 
-	//
+  protected $table = 'players';
+
+  public function group() {
+    return $this->belongsTo('App\Group');
+  }
 
 }

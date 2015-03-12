@@ -10,4 +10,8 @@ class Group extends Model {
     return $this->belongsTo('App\Contest');
   }
 
+  public function players() {
+    return $this->hasMany('App\Player');
+  }
+
 }
