@@ -7,8 +7,8 @@
       <h1>{{ $group->contest->name }} > {{ $group->name }}</h1>
 			<div class="row col-md-12">
         <ul>
-          @foreach( $group->players as $player )
-          <li><a href="/player/{{ $player->id }}">{{ $player->name }}</a></li>
+          @foreach( $contest->judges as $judge )
+          <li><a href="/judge/{{ $group->id }}/{{ $judge->id }}">{{ $judge->name }}</a></li>
           @endforeach
         </ul>
       </div>

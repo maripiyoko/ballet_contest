@@ -54,7 +54,8 @@ class GroupController extends Controller {
 	public function show($id)
 	{
     $group = Group::find($id);
-    return view('group')->with(compact('group'));
+    $contest = $group->contest;
+    return view('group')->with(compact('group', 'contest'));
 	}
 
 	/**
