@@ -24,6 +24,7 @@ class HomeController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
+		$this->middleware('organization');
 	}
 
 	/**
@@ -33,9 +34,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-    $currentUser = Auth::user();
-    $organization = Organization::find(1);
-		return view('home')->with(compact('currentUser', 'organization'));
+		return view('home');
 	}
 
 }

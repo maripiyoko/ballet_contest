@@ -19,3 +19,6 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::resource('contest', 'ContestController', ['only' => ['show'] ]);
+Route::resource('group', 'GroupController', ['only' => ['show'] ]);
