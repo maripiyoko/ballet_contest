@@ -9,6 +9,12 @@ use App\Contest;
 
 class ContestController extends Controller {
 
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('organization');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

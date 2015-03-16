@@ -9,6 +9,12 @@ use App\Group;
 
 class GroupController extends Controller {
 
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('organization');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
