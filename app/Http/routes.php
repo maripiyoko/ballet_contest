@@ -22,3 +22,4 @@ Route::controllers([
 
 Route::resource('contest', 'ContestController', ['only' => ['show'] ]);
 Route::resource('group', 'GroupController', ['only' => ['show'] ]);
+Route::resource('group.judge', 'GroupJudgeController', ['only' => ['show'] ]);
