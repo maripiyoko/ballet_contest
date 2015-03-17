@@ -12,10 +12,11 @@
         <span>{{ $judge->name }}</span>
       </h1>
 			<div class="row col-md-12">
-        <table class="table">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th>参加者</th>
+              <th>エントリーNo</th>
               @foreach( $viewpoints as $vp )
                 <th>{{ $vp->name }}</th>
               @endforeach
@@ -25,8 +26,9 @@
             @foreach( $players as $player )
             <tr>
               <td>{{ $player->name }}</td>
+              <td>{{ $player->entry_no }}</td>
               @foreach( $viewpoints as $vp )
-                <td><input type="text" class="form-control" value=""></td>
+                <td><input type="text" class="form-control input-sm" value=""></td>
               @endforeach
             </tr>
             @endforeach
