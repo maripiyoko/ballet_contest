@@ -15,6 +15,11 @@ class CreateViewpointsTable extends Migration {
 		Schema::create('viewpoints', function(Blueprint $table)
 		{
 			$table->increments('id');
+      $table->string('name')->unique();
+      $table->string('description');
+      $table->integer('contest_id')->unsigned()->default(0);
+      $table->foreign('contest_id')
+        ->references('id')->on('contests')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}
