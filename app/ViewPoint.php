@@ -7,7 +7,7 @@ class ViewPoint extends Model {
   protected $table = 'viewpoints';
 
   public function contest() {
-    return $this->belongsTo('App\Judge');
+    return $this->belongsTo('App\Contest');
   }
 
 }
