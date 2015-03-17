@@ -5,7 +5,15 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use Auth;
+
 class ScoreController extends Controller {
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('organization');
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -32,9 +40,25 @@ class ScoreController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+    $player_id = $request->input('player_id');
+    $judge_id = $request->input('judge_id');
+    $viewpoint_id = $request->input('viewpoint_id');
+    $score = $request->input('score');
+    $currentUser = \Auth::user();
+    $user_id = $currentUser->id;
+    // save
+    $score = new App\Score();
+    $score->player_id = $player_id;
+    $score->judge_id = $judge_id;
+    $score->viewpoint_id = $viewpoint_id;
+    $score->user_id = $user_id;
+    $score->score = score;
+    $score.save();
+    // response
+    $score_id = $score->id;
+    return $response->json(['id' => $score_id]);
 	}
 
 	/**
