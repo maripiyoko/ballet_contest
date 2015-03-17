@@ -4,7 +4,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10">
-      <h1>{{ $group->contest->name }} > {{ $group->name }} > {{ $judge->name }}</h1>
+      <h1>
+        <a href="/contest/{{ $group->contest->id }}">{{ $group->contest->name }}</a>
+        <span> > </span>
+        <a href="/group/{{ $group->id }}">{{ $group->name }}</a>
+        <span> > </span>
+        <span>{{ $judge->name }}</span>
+      </h1>
 			<div class="row col-md-12">
         <table class="table">
           <thead>
