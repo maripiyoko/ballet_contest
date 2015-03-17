@@ -6,8 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Group;
+use App\Contest;
+use App\Judge;
+use App\Player;
+use App\ViewPoint;
 
-class GroupController extends Controller {
+class GroupJudgeController extends Controller {
 
 	public function __construct()
 	{
@@ -48,14 +52,19 @@ class GroupController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  $groupId
+	 * @param  int  $judgeId
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($groupId, $judgeId)
 	{
-    $group = Group::find($id);
+    $group = Group::find($groupId);
+    $judge = Judge::find($judgeId);
     $contest = $group->contest;
-    return view('group')->with(compact('group', 'contest'));
+    $players = $group->players;
+    $viewpoints = $contest->viewpoints;
+    return view('group_judge')
+      ->with(compact('group', 'judge', 'contest', 'players', 'viewpoints'));
 	}
 
 	/**

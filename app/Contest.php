@@ -14,4 +14,12 @@ class Contest extends Model {
     return $this->hasMany('App\Group');
   }
 
+  public function judges() {
+    return $this->hasMany('App\Judge');
+  }
+
+  public function viewpoints() {
+    return $this->hasMany('App\ViewPoint');
+  }
+
 }
