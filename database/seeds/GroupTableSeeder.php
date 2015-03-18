@@ -13,32 +13,52 @@ class GroupTableSeeder extends Seeder {
     $group_array = [
       [
         'id' => 1,
-        'name' => '1年生',
+        'name' => 'L1',
         'contest_id' => 1
       ],
       [
         'id' => 2,
-        'name' => '2年生',
+        'name' => 'L2',
         'contest_id' => 1
       ],
       [
         'id' => 3,
-        'name' => '3年生',
+        'name' => 'L3',
         'contest_id' => 1
       ],
       [
         'id' => 4,
-        'name' => '4年生',
+        'name' => 'L4',
         'contest_id' => 1
       ],
       [
         'id' => 5,
-        'name' => '5年生',
+        'name' => 'L5',
         'contest_id' => 1
       ],
       [
         'id' => 6,
-        'name' => '6年生',
+        'name' => 'J1',
+        'contest_id' => 1
+      ],
+      [
+        'id' => 7,
+        'name' => 'J2',
+        'contest_id' => 1
+      ],
+      [
+        'id' => 8,
+        'name' => 'J3',
+        'contest_id' => 1
+      ],
+      [
+        'id' => 9,
+        'name' => 'S1',
+        'contest_id' => 1
+      ],
+      [
+        'id' => 10,
+        'name' => 'S2',
         'contest_id' => 1
       ]
     ];
