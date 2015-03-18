@@ -28,7 +28,12 @@
               <td>{{ $player->name }}</td>
               <td>{{ $player->entry_no }}</td>
               @foreach( $viewpoints as $vp )
-                <td><input type="text" class="form-control input-sm" value=""></td>
+                {{-- */$score = $player->score($judge->id, $vp->id)/* --}}
+                <td>
+                  <input type="text" class="form-control input-sm text-right col-sm-10"
+                      value="{{ isset($score) ? $score->score : '' }}"
+                      data-url="/score{{ isset($score) ? '/'. $score->id : '' }}">
+                </td>
               @endforeach
             </tr>
             @endforeach
