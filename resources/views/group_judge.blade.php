@@ -35,7 +35,8 @@
                   @else
                   {!! Form::model(new App\Score, ['route' => ['score.store']]) !!}
                   @endif
-                    {!! Form::text('score', isset($score) ? $score->score : '') !!}
+                    {!! Form::text('score', isset($score) ? $score->score : '',
+                      ['class' => 'js-score form-control input-sm text-right'] ) !!}
                     {!! Form::hidden('judge_id', $judge->id) !!}
                     {!! Form::hidden('viewpoint_id', $vp->id) !!}
                     {!! Form::hidden('player_id', $player->id) !!}
