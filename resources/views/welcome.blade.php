@@ -18,12 +18,13 @@
 		</style>
 	</head>
 
-	<body>
-		<div class="container">
-			<div class="jumbotron">
-				<h1>Lala Ballet</h1>
-				<p>{{ Inspiring::quote() }}</p>
-			</div>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Lala Ballet</h1>
+        <p>{{ Inspiring::quote() }}</p>
+        <h2><a href="/home" class="btn btn-lg btn-default">Login to your organization</a></h2>
+      </div>
 		</div>
 	</body>
 </html>
