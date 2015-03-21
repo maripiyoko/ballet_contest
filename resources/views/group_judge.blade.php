@@ -30,9 +30,12 @@
               @foreach( $viewpoints as $vp )
                 {{-- */$score = $player->score($judge->id, $vp->id)/* --}}
                 <td>
-                  <input type="text" class="form-control input-sm text-right col-sm-10"
-                      value="{{ isset($score) ? $score->score : '' }}"
-                      data-url="/score{{ isset($score) ? '/'. $score->id : '' }}">
+                  {!! Form::model(new App\Score, ['route' => ['score.store']]) !!}
+                    {!! Form::text('score', isset($score) ? $score->score : '') !!}
+                    {!! Form::hidden('judge_id', $judge->id) !!}
+                    {!! Form::hidden('viewpoint_id', $vp->id) !!}
+                    {!! Form::hidden('player_id', $player->id) !!}
+                  {!! Form::close() !!}
                 </td>
               @endforeach
             </tr>
