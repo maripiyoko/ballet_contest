@@ -15,6 +15,34 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('excel/download', function(){
+	Excel::create('Filename', function($excel) {
+
+		// Set the title
+		$excel->setTitle('Our new awesome title');
+
+		// Chain the setters
+		$excel->setCreator('Maatwebsite')
+		->setCompany('Maatwebsite');
+
+		// Call them separately
+		$excel->setDescription('A demonstration to change the file properties');
+
+		$excel->sheet('First sheet', function($sheet) {
+
+			$sheet->setCellValueByColumnAndRow(0, 1, 'excel' );
+			$sheet->setCellValueByColumnAndRow(1, 1, 'test' );
+			$sheet->setCellValueByColumnAndRow(2, 2, 'OK?' );
+
+
+			//$sheet->loadView('group');
+		});
+
+	})->export('xls');
+
+
+});
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
