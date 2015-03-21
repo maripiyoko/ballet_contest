@@ -10,7 +10,8 @@
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
-    "heroku/heroku-buildpack-php": "*"
+    "heroku/heroku-buildpack-php": "*",
+		"maatwebsite/excel": "~2.0.0"
 	},
 	"autoload": {
 		"classmap": [
@@ -42,4 +43,5 @@
 	"config": {
 		"preferred-install": "dist"
 	}
+
 }
