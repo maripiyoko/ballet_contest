@@ -30,7 +30,11 @@
               @foreach( $viewpoints as $vp )
                 {{-- */$score = $player->score($judge->id, $vp->id)/* --}}
                 <td>
+                  @if (isset($score))
+                  {!! Form::model($score, ['method' => 'PATCH', 'route' => ['score.update', $score->id]]) !!}
+                  @else
                   {!! Form::model(new App\Score, ['route' => ['score.store']]) !!}
+                  @endif
                     {!! Form::text('score', isset($score) ? $score->score : '') !!}
                     {!! Form::hidden('judge_id', $judge->id) !!}
                     {!! Form::hidden('viewpoint_id', $vp->id) !!}

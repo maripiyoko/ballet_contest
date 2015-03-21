@@ -92,7 +92,16 @@ class ScoreController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+    $score_point = Request::input('score');
+    $user_id = \Auth::user()->id;
+    // save
+    $score = \App\Score::find($id);
+    $score->user_id = $user_id;
+    $score->score = $score_point;
+    $score->save();
+    // response
+    $score_id = $score->id;
+    return response()->json(['id' => $score_id, 'score' => $score->score]);
 	}
 
 	/**
