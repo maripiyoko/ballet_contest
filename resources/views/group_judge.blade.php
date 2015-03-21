@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-10">
+		<div class="col-md-12">
       <h1>
         <a href="/contest/{{ $group->contest->id }}">{{ $group->contest->name }}</a>
         <span> > </span>
@@ -30,9 +30,18 @@
               @foreach( $viewpoints as $vp )
                 {{-- */$score = $player->score($judge->id, $vp->id)/* --}}
                 <td>
-                  <input type="text" class="form-control input-sm text-right col-sm-10"
-                      value="{{ isset($score) ? $score->score : '' }}"
-                      data-url="/score{{ isset($score) ? '/'. $score->id : '' }}">
+                  @if (isset($score))
+                  {!! Form::model($score, ['method' => 'PATCH', 'route' => ['score.update', $score->id]]) !!}
+                  @else
+                  {!! Form::model(new App\Score, ['route' => ['score.store']]) !!}
+                  @endif
+                    {!! Form::text('score', isset($score) ? $score->score : '',
+                      ['class' => 'js-score form-control input-sm text-right'] ) !!}
+                    {!! Form::hidden('group_id', $group->id) !!}
+                    {!! Form::hidden('judge_id', $judge->id) !!}
+                    {!! Form::hidden('viewpoint_id', $vp->id) !!}
+                    {!! Form::hidden('player_id', $player->id) !!}
+                  {!! Form::close() !!}
                 </td>
               @endforeach
             </tr>

@@ -3,9 +3,12 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 
+use Request;
 use Auth;
+use App\Score;
 
 class ScoreController extends Controller {
 
@@ -40,25 +43,24 @@ class ScoreController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store()
 	{
-    $player_id = $request->input('player_id');
-    $judge_id = $request->input('judge_id');
-    $viewpoint_id = $request->input('viewpoint_id');
-    $score = $request->input('score');
-    $currentUser = \Auth::user();
-    $user_id = $currentUser->id;
+    $player_id = Request::input('player_id');
+    $judge_id = Request::input('judge_id');
+    $viewpoint_id = Request::input('viewpoint_id');
+    $score_point = Request::input('score');
+    $user_id = \Auth::user()->id;
     // save
-    $score = new App\Score();
+    $score = new \App\Score();
     $score->player_id = $player_id;
     $score->judge_id = $judge_id;
     $score->viewpoint_id = $viewpoint_id;
     $score->user_id = $user_id;
-    $score->score = score;
-    $score.save();
+    $score->score = $score_point;
+    $score->save();
     // response
-    $score_id = $score->id;
-    return $response->json(['id' => $score_id]);
+    $group_id = Request::input('group_id');
+    return redirect()->route('group.judge.show', [ $group_id, $judge_id ]);
 	}
 
 	/**
@@ -91,7 +93,17 @@ class ScoreController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+    $score_point = Request::input('score');
+    $user_id = \Auth::user()->id;
+    // save
+    $score = \App\Score::find($id);
+    $score->user_id = $user_id;
+    $score->score = $score_point;
+    $score->save();
+    // response
+    $judge_id = Request::input('judge_id');
+    $group_id = Request::input('group_id');
+    return redirect()->route('group.judge.show', [ $group_id, $judge_id ]);
 	}
 
 	/**
