@@ -13,7 +13,7 @@ class ViewPointTableSeeder extends Seeder {
     $vp_array = [
       [
         'id' => 1,
-        'name' => '芸術性',
+        'name' => '芸術',
         'description' => '芸術性の説明',
         'contest_id' => 1
       ],
@@ -37,7 +37,7 @@ class ViewPointTableSeeder extends Seeder {
       ],
       [
         'id' => 5,
-        'name' => '表現力',
+        'name' => '表現',
         'description' => '表現力の説明',
         'contest_id' => 1
       ],
@@ -49,7 +49,7 @@ class ViewPointTableSeeder extends Seeder {
       ],
       [
         'id' => 7,
-        'name' => '将来性',
+        'name' => '将来',
         'description' => '将来性の説明',
         'contest_id' => 1
       ]
