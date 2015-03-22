@@ -13,11 +13,11 @@ class ContestTableSeeder extends Seeder {
     Contest::create(
       [
         'id' => 1,
-        'name' => 'Contest 1',
+        'name' => 'hearts and minds 2015',
         'description' => 'テストコンテスト　学年別',
         'organization_id' => 1,
-        'start_date' => '2015/03/25',
-        'end_date' => '2015/03/25'
+        'start_date' => '2015/03/31',
+        'end_date' => '2015/03/31'
       ]
     );
   }
