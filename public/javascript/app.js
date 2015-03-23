@@ -1,7 +1,7 @@
 $(function() {
 
   $(function() {
-    $('.js-tab:first').tab('show');
+    $('.js-tab:first a').tab('show');
   });
 
   $('body').on('click', '.js-score', function(e) {
