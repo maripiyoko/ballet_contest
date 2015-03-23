@@ -13,9 +13,9 @@ $(function() {
     var originalId = url.split('score/')[1];
     if(!originalId) {
       url = url + "/" + id;
+      $form.append('<input name="_method" type="hidden" value="PATCH">');
     }
     $form.attr('action', url);
-    console.log($form.attr('action'));
   };
 
   $('.js-form-ajax').on('submit', 'form', function(e) {
