@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <div class="pull-right"><a href="#" class="btn btn-default">結果を表示する</a></div>
+      <div class="pull-right"><a href="/result/{{ $contest->id }}" class="btn btn-default">結果を表示する</a></div>
 		</div>
 	</div>
 </div>

@@ -3,11 +3,11 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
-
 use App\Contest;
 
-class ContestController extends Controller {
+use Illuminate\Http\Request;
+
+class ResultController extends Controller {
 
 	public function __construct()
 	{
@@ -24,7 +24,7 @@ class ContestController extends Controller {
 	public function show($id)
 	{
     $contest = Contest::find($id);
-		return view('contest')->with(compact('contest'));
+		return view('result')->with(compact('contest'));
 	}
 
 }
