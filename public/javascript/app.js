@@ -1,5 +1,9 @@
 $(function() {
 
+  $(function() {
+    $('.js-tab:first').tab('show');
+  });
+
   $('body').on('click', '.js-score', function(e) {
     $(this).select();
   });

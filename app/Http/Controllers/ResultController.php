@@ -3,11 +3,11 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Contest;
+
 use Illuminate\Http\Request;
 
-use App\Group;
-
-class GroupController extends Controller {
+class ResultController extends Controller {
 
 	public function __construct()
 	{
@@ -23,9 +23,8 @@ class GroupController extends Controller {
 	 */
 	public function show($id)
 	{
-    $group = Group::find($id);
-    $contest = $group->contest;
-    return view('group')->with(compact('group', 'contest'));
+    $contest = Contest::find($id);
+		return view('result')->with(compact('contest'));
 	}
 
 }
