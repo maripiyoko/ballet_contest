@@ -21,6 +21,18 @@
         <div class="tab-content">
           @foreach( $contest->groups as $group )
           <div role="tabpanel" class="tab-pane fade" id="group-{{ $group->id }}">
+          <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>参加者</th>
+            </tr>
+          </thead>
+          @foreach ( $group->players as $player )
+            <tr>
+              <th>{{ $player->name }}</th>
+            </tr>
+          @endforeach
+          </table>
           </div>
           @endforeach
         </div>
