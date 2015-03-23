@@ -1,11 +1,10 @@
 $(function() {
 
-  $('body').on('keyup', '.js-score', function(e) {
-    if(e.which == 13) {
-      $(this).blur();
+  $('body').on('keydown', '.js-score', function(e) {
+    if(e.which == 13 || e.which == 9) {
+      $(this).closest('form').submit();
       e.preventDefault();
     }
-    return false;
   });
 
   var setFormUrl = function($form, id) {
