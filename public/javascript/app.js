@@ -8,6 +8,13 @@ $(function() {
     if(e.which == 13 || e.which == 9) {
       $(this).closest('form').submit();
       e.preventDefault();
+      var $allScores = $('.js-score');
+      var index = $allScores.index($(this));
+      var nextIndex = index + 1;
+      if(nextIndex >= $allScores.length) {
+        nextIndex = 0;
+      }
+      $('.js-score:eq('+nextIndex+')').click();
     }
   });
 
@@ -31,7 +38,6 @@ $(function() {
       data: $form.serialize(),
       dataType: 'json',
       success: function(response) {
-        console.log(response);
         var id = response.id;
         setFormUrl($form, id);
       },
