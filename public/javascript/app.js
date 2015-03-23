@@ -1,5 +1,9 @@
 $(function() {
 
+  $('body').on('click', '.js-score', function(e) {
+    $(this).select();
+  });
+
   $('body').on('keydown', '.js-score', function(e) {
     if(e.which == 13 || e.which == 9) {
       $(this).closest('form').submit();
