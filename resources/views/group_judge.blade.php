@@ -24,7 +24,7 @@
               @endforeach
             </tr>
           </thead>
-          <tbody>
+          <tbody class="js-form-ajax">
             @foreach( $players as $player )
             <tr>
               <td>{{ $player->name }}</td>

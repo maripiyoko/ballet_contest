@@ -4,7 +4,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Response;
-use Illuminate\Http\RedirectResponse;
 
 use Request;
 use Auth;
@@ -59,8 +58,8 @@ class ScoreController extends Controller {
     $score->score = $score_point;
     $score->save();
     // response
-    $group_id = Request::input('group_id');
-    return redirect()->route('group.judge.show', [ $group_id, $judge_id ]);
+    $score_id = $score->id;
+    return response()->json(['id' => $score_id]);
 	}
 
 	/**
@@ -101,9 +100,8 @@ class ScoreController extends Controller {
     $score->score = $score_point;
     $score->save();
     // response
-    $judge_id = Request::input('judge_id');
-    $group_id = Request::input('group_id');
-    return redirect()->route('group.judge.show', [ $group_id, $judge_id ]);
+    $score_id = $score->id;
+    return response()->json(['id' => $score_id, 'score' => $score->score]);
 	}
 
 	/**
