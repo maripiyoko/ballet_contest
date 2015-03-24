@@ -11,9 +11,8 @@
         <div role="tabpanel">
           <ul class="nav nav-tabs" role="tablist">
             @foreach( $contest->groups as $group )
-            <li class="js-tab" role="presentation" aria-controls="tab-{{ $group->id }}"
-              role="tab" data-toggle="tab">
-              <a href="#tab-{{$group->id}}">{{ $group->name }}</a>
+            <li class="js-tab" role="presentation" role="tab">
+              <a href="#group-{{$group->id}}" data-toggle="tab">{{ $group->name }}</a>
             </li>
             @endforeach
           </ul>
@@ -21,8 +20,19 @@
 
         <div class="tab-content">
           @foreach( $contest->groups as $group )
-          <div role="tabpanel" class="tab-pane" id="tab-{{ $group->id }}">
-            tab contents for {{ $group->name }}
+          <div role="tabpanel" class="tab-pane fade" id="group-{{ $group->id }}">
+          <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>参加者</th>
+            </tr>
+          </thead>
+          @foreach ( $group->players as $player )
+            <tr>
+              <th>{{ $player->name }}</th>
+            </tr>
+          @endforeach
+          </table>
           </div>
           @endforeach
         </div>
