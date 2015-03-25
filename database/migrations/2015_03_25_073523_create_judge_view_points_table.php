@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJudgeViewpointsTable extends Migration {
+class CreateJudgeViewPointsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,8 +14,11 @@ class CreateJudgeViewpointsTable extends Migration {
 	{
 		Schema::create('judge_viewpoints', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
+      $table->integer('judge_id')->unsigned()->default(0);
+      $table->foreign('judge_id')->references('id')->on('judges')->onDelete('cascade');
+      $table->integer('viewpoint_id')->unsigned()->default(0);
+      $table->foreign('viewpoint_id')->references('id')->on('viewpoints')->onDelete('cascade');
+      $table->primary(['judge_id', 'viewpoint_id']);
 		});
 	}
 
