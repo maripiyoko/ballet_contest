@@ -14,13 +14,9 @@ class Judge extends Model {
   }
 
   public function viewpoints() {
-    $judgeViewPoints = JudgeViewPoint::where('judge_id', '=', $this->id)->get();
-    $viewpoints = array();
-    foreach($judgeViewPoints as $jp) {
-      $v = ViewPoint::find($jp->viewpoint_id);
-      array_push($viewpoints, $v);
-    }
-    return $viewpoints;
+    return JudgeViewPoint::leftJoin('viewpoints',
+      'judge_viewpoints.viewpoint_id', '=', 'viewpoints.id' )
+      ->where('viewpoints.id', '=', $this->id)->get();
   }
 
 }
