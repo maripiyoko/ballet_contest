@@ -12,7 +12,10 @@
 			<div class="row col-md-12">
         <ul>
           @foreach( $contest->judges as $judge )
-          <li><a href="/group/{{ $group->id }}/judge/{{ $judge->id }}">{{ $judge->name }}</a></li>
+          <li>
+            <a href="/group/{{ $group->id }}/judge/{{ $judge->id }}">{{ $judge->name }}</a>
+            {{ $judge->viewpoints() }}
+          </li>
           @endforeach
         </ul>
       </div>

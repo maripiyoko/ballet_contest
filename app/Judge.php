@@ -14,8 +14,14 @@ class Judge extends Model {
   }
 
   public function viewpoints() {
-    return JudgeViewPoint::where('judge_id', $this->id)
+    $judgeViewpoints = JudgeViewPoint::where('judge_id', $this->id)
       ->leftJoin('viewpoints', 'viewpoints.id', '=', 'judge_viewpoints.viewpoint_id')->get();
+    $models = [];
+    $eloquentModel = new ViewPoint;
+    foreach($judgeViewpoints as $jv) {
+      $models[] = $eloquentModel->newFromBuilder($jv);
+    }
+    return $eloquentModel->newCollection($models);
   }
 
 }
