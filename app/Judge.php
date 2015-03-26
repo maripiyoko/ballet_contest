@@ -14,9 +14,8 @@ class Judge extends Model {
   }
 
   public function viewpoints() {
-    return JudgeViewPoint::leftJoin('viewpoints',
-      'judge_viewpoints.viewpoint_id', '=', 'viewpoints.id' )
-      ->where('viewpoints.id', '=', $this->id)->get();
+    return JudgeViewPoint::where('judge_id', $this->id)
+      ->leftJoin('viewpoints', 'viewpoints.id', '=', 'judge_viewpoints.viewpoint_id')->get();
   }
 
 }
