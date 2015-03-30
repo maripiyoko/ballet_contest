@@ -30,12 +30,11 @@ class GroupJudgeController extends Controller {
 	{
     $group = Group::find($groupId);
     $judge = Judge::find($judgeId);
-		$viewpoint_ids = explode(',', $judge->view_points);
     $contest = $group->contest;
     $players = $group->players;
-    $viewpoints = $contest->viewpoints;
+    $viewpoints = $judge->viewpoints();
     return view('group_judge')
-      ->with(compact('group', 'judge', 'contest', 'players', 'viewpoints', 'viewpoint_ids'));
+      ->with(compact('group', 'judge', 'contest', 'players', 'viewpoints'));
 	}
 
 }

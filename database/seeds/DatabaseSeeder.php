@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder {
     $this->call('PlayerTableSeeder');
     $this->call('JudgeTableSeeder');
     $this->call('ViewPointTableSeeder');
+    $this->call('JudgeViewPointTableSeeder');
 	}
 
 }
