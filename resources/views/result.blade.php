@@ -21,15 +21,15 @@
         <div class="tab-content">
           @foreach( $contest->groups as $group )
           <div role="tabpanel" class="tab-pane fade" id="group-{{ $group->id }}">
-          <table class="table table-hover">
+          <table class="table table-hover table-bordered">
           <thead>
-            <tr>
+            <tr class="info">
               <th>審査員</th>
               @foreach ( $contest->judges as $judge )
-                <th colspan="3">{{ $judge->name }}</th>
+                <th colspan="3" style="text-align:center;">{{ $judge->name }}</th>
               @endforeach
             </tr>
-            <tr>
+            <tr class="success">
               <th>観点</th>
               @foreach ( $contest->judges as $judge )
                 @foreach ( $judgesViewpointsArray[$judge->id] as $vp )
