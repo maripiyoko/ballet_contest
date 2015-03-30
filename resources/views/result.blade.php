@@ -24,7 +24,18 @@
           <table class="table table-hover">
           <thead>
             <tr>
-              <th>参加者</th>
+              <th>審査員</th>
+              @foreach ( $contest->judges as $judge )
+                <th colspan="3">{{ $judge->name }}</th>
+              @endforeach
+            </tr>
+            <tr>
+              <th>観点</th>
+              @foreach ( $contest->judges as $judge )
+                @foreach ( $judgesViewpointsArray[$judge->id] as $vp )
+                <th>{{ $vp->name }}</th>
+                @endforeach
+              @endforeach
             </tr>
           </thead>
           @foreach ( $group->players as $player )
