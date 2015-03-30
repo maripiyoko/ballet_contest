@@ -17,7 +17,6 @@
             @endforeach
           </ul>
         </div>
-
         <div class="tab-content">
           @foreach( $contest->groups as $group )
           <div role="tabpanel" class="tab-pane fade" id="group-{{ $group->id }}">
@@ -41,6 +40,15 @@
           @foreach ( $group->players as $player )
             <tr>
               <th>{{ $player->name }}</th>
+              @foreach ( $contest->judges as $judge )
+                @foreach ( $judgesViewpointsArray[$judge->id] as $vp )
+                  <td>
+                    @if( isset($scores[$judge->id][$vp->id][$player->id]) )
+                      {{ $scores[$judge->id][$vp->id][$player->id]->score }}
+                    @endif
+                  </td>
+                @endforeach
+              @endforeach
             </tr>
           @endforeach
           </table>
