@@ -14,7 +14,9 @@
           @foreach( $contest->judges as $judge )
           <li>
             <a href="/group/{{ $group->id }}/judge/{{ $judge->id }}">{{ $judge->name }}</a>
-            {{ $judge->viewpoints() }}
+            @foreach( $judge->viewpoints() as $vp )
+              {{ $vp->name }}
+            @endforeach
           </li>
           @endforeach
         </ul>
