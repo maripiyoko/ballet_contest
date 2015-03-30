@@ -41,6 +41,15 @@
           @foreach ( $group->players as $player )
             <tr>
               <th>{{ $player->name }}</th>
+              @foreach( $contest->viewpoints as $viewpoint)
+                @foreach ( $viewpoint->judges() as $j )
+                <td>
+                  @if( isset( $scores[$j->id][$viewpoint->id][$player->id] ) )
+                  {{ $scores[$j->id][$viewpoint->id][$player->id]->score }}
+                  @endif
+                </td>
+                @endforeach
+              @endforeach
             </tr>
           @endforeach
           </table>
