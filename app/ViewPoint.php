@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+use DB;
 use App\JudgeViewPoint;
 use App\ViewPoint;
 
@@ -21,6 +22,15 @@ class ViewPoint extends Model {
       array_push($models, $m);
     }
     return $models;
+  }
+
+  public function sumupScores($player_id) {
+    $avgScore = DB::table('scores')
+      ->select(DB::raw('AVG(score)'))
+      ->where('viewpoint_id', '=', $this->id)
+      ->where('player_id', '=', $player_id)
+      ->first();
+    return $avgScore->avg;
   }
 
 }
