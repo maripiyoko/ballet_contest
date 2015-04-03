@@ -44,8 +44,9 @@
               @foreach( $contest->viewpoints as $viewpoint)
                 @foreach ( $viewpoint->judges() as $j )
                 <td class="text-right">
-                  @if( isset( $scores[$j->id][$viewpoint->id][$player->id] ) )
-                  {{ $scores[$j->id][$viewpoint->id][$player->id]->score }}
+	                {{-- */$score = $contest->score($j->id, $viewpoint->id, $player->id) /* --}}
+                  @if( isset($score) )
+                  {{ $score->score }}
                   @endif
                 </td>
                 @endforeach

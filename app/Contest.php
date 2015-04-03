@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Score;
+
 class Contest extends Model {
 
 	protected $table = 'contests';
@@ -22,4 +24,14 @@ class Contest extends Model {
     return $this->hasMany('App\ViewPoint');
   }
 
+  public function players() {
+    return $this->hasManyThrough('App\Player', 'App\Group');
+  }
+
+  public function score($judge_id, $viewpoint_id, $player_id) {
+    return Score::where('judge_id', $judge_id)
+      ->where('viewpoint_id', $viewpoint_id)
+      ->where('player_id', $player_id)
+      ->first();
+  }
 }
