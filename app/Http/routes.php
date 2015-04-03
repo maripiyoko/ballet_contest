@@ -43,6 +43,8 @@ Route::get('excel/download', function(){
 
 });
 
+Route::get('result/download/{id}', 'ResultController@download');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
