@@ -3,8 +3,16 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
-      <h1>{{ $contest->name }}</h1>
+		<div class="row col-md-12">
+      <h2>
+        <span>{{ $contest->name }}</span>
+        <a href="/result/{{ $contest->id }}" class="btn btn-default pull-right">
+          結果を表示する
+        </a>
+      </h2>
+    </div>
+
+    <div class="row col-md-12">
 			<div class="row col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading">スコアを入力する部門を選んでください</div>
@@ -22,9 +30,8 @@
           </div>
         </div>
       </div>
-
-      <div class="pull-right"><a href="/result/{{ $contest->id }}" class="btn btn-default">結果を表示する</a></div>
 		</div>
+
 	</div>
 </div>
 @endsection

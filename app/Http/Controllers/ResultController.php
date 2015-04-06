@@ -4,10 +4,10 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Contest;
-use App\Player;
-use App\Score;
 
 use Illuminate\Http\Request;
+
+use Excel;
 
 class ResultController extends Controller {
 
@@ -26,20 +26,22 @@ class ResultController extends Controller {
 	public function show($id)
 	{
     $contest = Contest::find($id);
-    $scores = [];
-    $players = Player::all();
-    foreach($contest->viewpoints as $viewpoint) {
-      foreach($viewpoint->judges() as $judge) {
-        foreach($players as $player) {
-          $s = Score::where('judge_id', $judge->id)
-            ->where('viewpoint_id', $viewpoint->id)
-            ->where('player_id', $player->id)->first();
-          $scores[$judge->id][$viewpoint->id][$player->id] = $s;
-        }
-      }
-    }
-    //dd($scores);
-		return view('result')->with(compact('contest', 'scores'));
+    return view('result')->with(compact('contest'));
 	}
 
+  public function download($id)
+  {
+    $contest = Contest::find($id);
+    $fileName = $contest->name;
+
+    Excel::create($fileName, function($excel) use ($contest) {
+      foreach($contest->groups as $group) {
+        $excel->sheet($group->name, function($sheet) use ($contest, $group) {
+          $sheet->loadView('result-table')
+            ->with(compact('contest', 'group'));
+        });
+      }
+    })->export('xls');
+
+  }
 }

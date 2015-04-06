@@ -3,11 +3,18 @@
 @section('content')
 <div class="container">
 	<div class="row">
-
 		<div class="col-md-12">
-      <h1>{{ $contest->name }} 結果</h1>
-			<div class="row col-md-12">
 
+      <div class="row col-md-12">
+        <h2>
+          <a href="/contest/{{ $contest->id }}">{{ $contest->name }}</a> 結果
+          <a href="/result/download/{{ $contest->id }}" class="btn btn-default pull-right">
+            <span>Excelダウンロード</span>
+          </a>
+        </h2>
+      </div>
+
+			<div class="row col-md-12">
         <div role="tabpanel">
           <ul class="nav nav-tabs" role="tablist">
             @foreach( $contest->groups as $group )
@@ -21,38 +28,7 @@
         <div class="tab-content">
           @foreach( $contest->groups as $group )
           <div role="tabpanel" class="tab-pane fade" id="group-{{ $group->id }}">
-          <table class="table table-hover table-bordered">
-          <thead>
-            <tr>
-              <th>観点</th>
-              @foreach ( $contest->viewpoints as $viewpoint )
-                <th colspan="{{ count($viewpoint->judges()) }}">{{ $viewpoint->name }}</th>
-              @endforeach
-            </tr>
-            <tr>
-              <th>審査員</th>
-              @foreach ( $contest->viewpoints as $viewpoint )
-                @foreach ( $viewpoint->judges() as $j )
-                <th>{{ $j->name }}</th>
-                @endforeach
-              @endforeach
-            </tr>
-          </thead>
-          @foreach ( $group->players as $player )
-            <tr>
-              <th>{{ $player->name }}</th>
-              @foreach( $contest->viewpoints as $viewpoint)
-                @foreach ( $viewpoint->judges() as $j )
-                <td>
-                  @if( isset( $scores[$j->id][$viewpoint->id][$player->id] ) )
-                  {{ $scores[$j->id][$viewpoint->id][$player->id]->score }}
-                  @endif
-                </td>
-                @endforeach
-              @endforeach
-            </tr>
-          @endforeach
-          </table>
+            @include('result-table', array('contest', $contest) )
           </div>
           @endforeach
         </div>
